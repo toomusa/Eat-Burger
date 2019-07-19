@@ -1,3 +1,60 @@
-<h1>Eat a Burger</h1>
+<h1>Welcome to Burger Haus</h1>
 
-{{title}}
+<h4>Home of the Wild Burgers</h4>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-4 col-sm-4 col-xs-4" id="new-items">
+            <h5>{{leftSectionHeader}}</h5>
+            {{#each newItems}}
+                <div id="{{this.Item}}">
+                    <ul>
+                        <li>{{this.Item}}  &nbsp;&nbsp;|&nbsp;&nbsp;  {{this.Burger}}  &nbsp;&nbsp;|&nbsp;&nbsp; <a href="/update/{{this.Item}}"><button class="btn btn-danger btn-sm">Devour</button></a></li>
+                    </ul>
+                </div>
+            {{/each}}
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <form action="/insert" method="POST">
+                <textarea name="burger"> </textarea>
+                <button type="submit">Submit a New Burger</button>
+            </form>
+            <br>
+            <div id="menu">
+                <a href="/select"><button type="submit" id="menuBtn">See All Burgers</button></a>
+                <br><br>
+                <table>
+                    <thead>
+                        <th><h5>{{col1}}</h5></th>
+                        <th><h5>{{col2}}</h5></th>
+                        <th><h5>{{col3}}</h5></th>
+                    </thead>
+                    <tbody>
+                        {{#each burgers}}
+                            <tr>
+                                <td>{{this.Item}}</td>
+                                <td>{{this.Burger}}</td>
+                                <td>{{this.Devoured}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-4" id="eaten-items">
+            <h5>{{rightSectionHeader}}</h5>
+            {{#each eatenItems}}
+                <div id="{{this.Item}}">
+                    <ul>
+                        <li>{{this.Item}}  &nbsp;&nbsp;|&nbsp;&nbsp;  {{this.Burger}} </li>
+                    </ul>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+</div>
